@@ -19,12 +19,12 @@ spec:
         type: number
       start_date:
         title: start_date
-        description: '%Y-%m-%d %H:%M:%S.%f+00:00'
+        description: '%Y-%m-%dT%H:%M:%S.%f%z'
         type: string
-        default: '2023-03-07 00:00:00.000000+00:00'
+        default: '2023-03-07T00:00:00.000000z'
       end_date:
         title: end_date
-        description: '%Y-%m-%d %H:%M:%S.%f+00:00 or leave empty for now_utc()'
+        description: '%Y-%m-%dT%H:%M:%S.%f%z or leave empty for now_utc()'
         type: string
         default: ''
       api_key:

@@ -535,8 +535,8 @@ streams:
     incremental_sync:
       type: DatetimeBasedCursor
       cursor_field: endretDato
-      datetime_format: '%Y-%m-%d %H:%M:%S.%f+00:00'
+      datetime_format: '%Y-%m-%dT%H:%M:%S.%f%z'
       cursor_granularity: PT1S
-      end_datetime: '{{ config[''end_date''] if config[''end_date'']|length else now_utc() }}'
+      end_datetime: '{{ config[''end_date''] if config[''end_date'']|length else now_utc().strftime("%Y-%m-%dT%H:%M:%S.%f%z") }}'
       start_datetime: '{{ config[''start_date''] }}'
       step: P1D

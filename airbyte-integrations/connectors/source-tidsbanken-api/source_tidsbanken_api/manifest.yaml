@@ -144,9 +144,9 @@ streams:
     incremental_sync:
       type: DatetimeBasedCursor
       cursor_field: endretDato
-      datetime_format: '%Y-%m-%d %H:%M:%S.%f+00:00'
+      datetime_format: '%Y-%m-%dT%H:%M:%S.%f%z'
       cursor_granularity: PT1S
-      end_datetime: '{{ config[''end_date''] if config[''end_date'']|length else now_utc() }}'
+      end_datetime: '{{ config[''end_date''] if config[''end_date'']|length else now_utc().strftime("%Y-%m-%dT%H:%M:%S.%f%z") }}'
       start_datetime: '{{ config[''start_date''] }}'
       step: P1D
   - type: DeclarativeStream
@@ -543,9 +543,9 @@ streams:
     incremental_sync:
       type: DatetimeBasedCursor
       cursor_field: endretDato
-      datetime_format: '%Y-%m-%d %H:%M:%S.%f+00:00'
+      datetime_format: '%Y-%m-%dT%H:%M:%S.%f%z'
       cursor_granularity: PT1S
-      end_datetime: '{{ config[''end_date''] if config[''end_date'']|length else now_utc() }}'
+      end_datetime: '{{ config[''end_date''] if config[''end_date'']|length else now_utc().strftime("%Y-%m-%dT%H:%M:%S.%f%z") }}'
       start_datetime: '{{ config[''start_date''] }}'
       step: P1D
 spec:
@@ -569,12 +569,12 @@ spec:
         type: number
       start_date:
         title: start_date
-        description: '%Y-%m-%d %H:%M:%S.%f+00:00'
+        description: '%Y-%m-%dT%H:%M:%S.%f%z'
         type: string
-        default: '2023-03-07 00:00:00.000000+00:00'
+        default: '2023-03-07T00:00:00.000000+00:00'
       end_date:
         title: end_date
-        description: '%Y-%m-%d %H:%M:%S.%f+00:00 or leave empty for now_utc()'
+        description: '%Y-%m-%dT%H:%M:%S.%f%z or leave empty for now_utc()'
         type: string
         default: ''
       api_key:
