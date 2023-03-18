@@ -3,7 +3,7 @@
     {
       "stream": {
         "name": "ansatte",
-        "selected": false,
+        "selected": true,
         "json_schema": {
           "ansattId": {
             "type": ["integer","null"]
@@ -138,30 +138,31 @@
     {
       "stream": {
         "name": "avdelinger",
+        "selected": true,
         "json_schema": {
           "avdelingId": {
-            "type": ["string","null"]
+            "type": "string"
           },
           "hovedavdelingId": {
-            "type": ["string","null"]
+            "type": "string"
           },
           "avdelingTekst": {
-            "type": ["string","null"]
+            "type": "string"
           },
           "beskrivelse": {
-            "type": ["string","null"]
+            "type": "string"
           },
           "timepris": {
-            "type": ["number","null"]
+            "type": "number"
           },
           "enhet": {
-            "type": ["string","null"]
+            "type": "string"
           },
           "organisasjonsnr": {
-            "type": ["string","null"]
+            "type": "string"
           },
           "eksternId": {
-            "type": ["string","null"]
+            "type": "string"
           }
         },
         "supported_sync_modes": ["full_refresh", "incremental"],
@@ -173,6 +174,7 @@
       {
         "stream": {
           "name": "timelister_date_paginated",
+          "selected": true,
           "json_schema": {
             "timeregistreringId": {
               "type": ["integer","null"]
@@ -298,6 +300,7 @@
       {
         "stream": {
           "name": "arbeidstyper",
+          "selected": true,
           "json_schema": {
             "AktiverSporsmal": {
               "type": "boolean"
@@ -333,7 +336,7 @@
               "type": "integer"
             },
             "FastTekst": {
-              "type": "null"
+              "type": "string"
             },
             "Forvalg": {
               "type": "integer"
@@ -354,10 +357,10 @@
               "type": "string"
             },
             "Kostkonto": {
-              "type": "null"
+              "type": "string"
             },
             "Notat": {
-              "type": "null"
+              "type": "string"
             },
             "OppdaterBmTidVedEndring": {
               "type": "boolean"
@@ -393,7 +396,7 @@
               "type": "string"
             },
             "Sporsmal": {
-              "type": "null"
+              "type": "string"
             },
             "Standard": {
               "type": "boolean"
