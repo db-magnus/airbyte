@@ -2,133 +2,8 @@
   "streams": [
     {
       "stream": {
-        "name": "timelister",
-        "json_schema": {
-          "timeregistreringId": {
-            "type": ["integer","null"]
-          },
-          "ansattId": {
-            "type": ["integer","null"]
-          },
-          "ansatt": {
-            "type": ["string","null"]
-          },
-          "dato": {
-            "type": ["string","null"]
-          },
-          "tm_Stemple_inn": {
-            "type": ["string","null"]
-          },
-          "tm_Stemple_ut": {
-            "type": ["string","null"]
-          },
-          "tm_Virk_inn": {
-            "type": ["string","null"]
-          },
-          "tm_Virk_ut": {
-            "type": ["string","null"]
-          },
-          "t_Pause1_Fra": {
-            "type": ["string","null"]
-          },
-          "t_Pause1_Til": {
-            "type": ["string","null"]
-          },
-          "t_Pause2_Fra": {
-            "type": ["string","null"]
-          },
-          "t_Pause2_Til": {
-            "type": ["string","null"]
-          },
-          "artId": {
-            "type": ["string","null"]
-          },
-          "ma_Timer": {
-            "type": ["number","null"]
-          },
-          "kostpris": {
-            "type": ["number","null"]
-          },
-          "salgspris": {
-            "type": ["number","null"]
-          },
-          "avdelingId": {
-            "type": ["string","null"]
-          },
-          "avdeling": {
-            "type": ["string","null"]
-          },
-          "prosjektId": {
-            "type": ["string","null"]
-          },
-          "prosjekt": {
-            "type": ["string","null"]
-          },
-          "avsnittId": {
-            "type": ["string","null"]
-          },
-          "jobbId": {
-            "type": ["string","null"]
-          },
-          "godkjent": {
-            "type": ["boolean","null"]
-          },
-          "notat": {
-            "type": ["string","null"]
-          },
-          "t_ArbT": {
-            "type": ["number","null"]
-          },
-          "kontoId": {
-            "type": ["string","null"]
-          },
-          "kundeId": {
-            "type": ["string","null"]
-          },
-          "arbeidsartId": {
-            "type": ["string","null"]
-          },
-          "faktureres": {
-            "type": ["boolean","null"]
-          },
-          "opprettetDato": {
-            "type": ["string","null"]
-          },
-          "endretDato": {
-            "type": ["string","null"]
-          },
-          "planFra": {
-            "type": ["string","null"]
-          },
-          "planTil": {
-            "type": ["string","null"]
-          },
-          "fAntall": {
-            "type": ["number","null"]
-          },
-          "produktId": {
-            "type": ["string","null"]
-          },
-          "produktiv": {
-            "type": ["boolean","null"]
-          },
-          "anleggId": {
-            "type": ["string","null"]
-          },
-          "timeType": {
-            "type": ["integer","null"]
-          }
-        },
-        "supported_sync_modes": ["full_refresh", "incremental"],
-        "source_defined_cursor": false
-      },
-      "sync_mode": "incremental",
-      "destination_sync_mode": "append"
-    },
-    {
-      "stream": {
         "name": "ansatte",
-        "selected": false,
+        "selected": true,
         "json_schema": {
           "ansattId": {
             "type": ["integer","null"]
@@ -263,30 +138,31 @@
     {
       "stream": {
         "name": "avdelinger",
+        "selected": true,
         "json_schema": {
           "avdelingId": {
-            "type": ["string","null"]
+            "type": "string"
           },
           "hovedavdelingId": {
-            "type": ["string","null"]
+            "type": "string"
           },
           "avdelingTekst": {
-            "type": ["string","null"]
+            "type": "string"
           },
           "beskrivelse": {
-            "type": ["string","null"]
+            "type": "string"
           },
           "timepris": {
-            "type": ["number","null"]
+            "type": "number"
           },
           "enhet": {
-            "type": ["string","null"]
+            "type": "string"
           },
           "organisasjonsnr": {
-            "type": ["string","null"]
+            "type": "string"
           },
           "eksternId": {
-            "type": ["string","null"]
+            "type": "string"
           }
         },
         "supported_sync_modes": ["full_refresh", "incremental"],
@@ -298,6 +174,7 @@
       {
         "stream": {
           "name": "timelister_date_paginated",
+          "selected": true,
           "json_schema": {
             "timeregistreringId": {
               "type": ["integer","null"]
@@ -423,6 +300,7 @@
       {
         "stream": {
           "name": "arbeidstyper",
+          "selected": true,
           "json_schema": {
             "AktiverSporsmal": {
               "type": "boolean"
@@ -458,7 +336,7 @@
               "type": "integer"
             },
             "FastTekst": {
-              "type": "null"
+              "type": "string"
             },
             "Forvalg": {
               "type": "integer"
@@ -479,10 +357,10 @@
               "type": "string"
             },
             "Kostkonto": {
-              "type": "null"
+              "type": "string"
             },
             "Notat": {
-              "type": "null"
+              "type": "string"
             },
             "OppdaterBmTidVedEndring": {
               "type": "boolean"
@@ -518,7 +396,7 @@
               "type": "string"
             },
             "Sporsmal": {
-              "type": "null"
+              "type": "string"
             },
             "Standard": {
               "type": "boolean"

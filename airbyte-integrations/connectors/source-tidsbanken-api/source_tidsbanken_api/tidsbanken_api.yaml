@@ -3,144 +3,11 @@ type: DeclarativeSource
 check:
   type: CheckStream
   stream_names:
-    - timelister
+    - timelister    
+    - avdelinger
+    - timelister_date_paginated
+    - arbeidstyper
 streams:
-  - type: DeclarativeStream
-    name: timelister
-    primary_key:
-      - timeregistreringId
-    schema_loader:
-      type: InlineSchemaLoader
-      schema:
-        $schema: http://json-schema.org/schema#
-        properties:
-          anleggId:
-            type: 'null'
-          ansatt:
-            type: 'null'
-          ansattId:
-            type: integer
-          arbeidsartId:
-            type: string
-          artId:
-            type: string
-          avdeling:
-            type: 'null'
-          avdelingId:
-            type: string
-          avsnittId:
-            type:
-              - 'null'
-              - string
-          dato:
-            type: string
-          endretDato:
-            type: string
-          fAntall:
-            type: number
-          faktureres:
-            type: boolean
-          godkjent:
-            type: boolean
-          jobbId:
-            type:
-              - 'null'
-              - string
-          kontoId:
-            type: 'null'
-          kostpris:
-            type: number
-          kundeId:
-            type: 'null'
-          ma_Timer:
-            type: number
-          notat:
-            type:
-              - 'null'
-              - string
-          opprettetDato:
-            type: string
-          planFra:
-            type:
-              - 'null'
-              - string
-          planTil:
-            type:
-              - 'null'
-              - string
-          produktId:
-            type:
-              - 'null'
-              - string
-          produktiv:
-            type: boolean
-          prosjekt:
-            type: 'null'
-          prosjektId:
-            type:
-              - 'null'
-              - string
-          salgspris:
-            type: number
-          t_ArbT:
-            type: number
-          t_Pause1_Fra:
-            type:
-              - 'null'
-              - string
-          t_Pause1_Til:
-            type:
-              - 'null'
-              - string
-          t_Pause2_Fra:
-            type: 'null'
-          t_Pause2_Til:
-            type: 'null'
-          timeType:
-            type: integer
-          timeregistreringId:
-            type: integer
-          tm_Stemple_inn:
-            type: string
-          tm_Stemple_ut:
-            type: string
-          tm_Virk_inn:
-            type: string
-          tm_Virk_ut:
-            type: string
-        type: object
-    retriever:
-      type: SimpleRetriever
-      requester:
-        type: HttpRequester
-        url_base: https://api.tidsbanken.net/v2
-        path: /timelister?$orderby=dato&
-        http_method: GET
-        request_parameters: {}
-        request_headers: {}
-        request_body_json: {}
-        authenticator:
-          type: ApiKeyAuthenticator
-          api_token: "{{ config['api_key'] }}"
-          header: tb-key
-      record_selector:
-        type: RecordSelector
-        extractor:
-          type: DpathExtractor
-          field_path: []
-      paginator:
-        type: DefaultPaginator
-        page_token_option:
-          type: RequestOption
-          inject_into: request_parameter
-          field_name: $skip
-        page_size_option:
-          inject_into: request_parameter
-          type: RequestOption
-          field_name: $top
-        pagination_strategy:
-          type: OffsetIncrement
-          page_size: 100
   - type: DeclarativeStream
     name: ansatte
     primary_key:
@@ -150,104 +17,170 @@ streams:
       schema:
         $schema: http://json-schema.org/schema#
         properties:
-          anleggId:
-            type: 'null'
-          ansatt:
-            type: 'null'
           ansattId:
-            type: integer
-          arbeidsartId:
-            type: string
-          artId:
-            type: string
-          avdeling:
-            type: 
-              - 'null'
-              - string
+            type:
+            - integer
+            - 'null'
+          fornavn:
+            type:
+            - string
+            - 'null'
+          etternavn:
+            type:
+            - string
+            - 'null'
+          adresse:
+            type:
+            - string
+            - 'null'
+          postnummer:
+            type:
+            - string
+            - 'null'
+          poststed:
+            type:
+            - string
+            - 'null'
+          tlfPrivat:
+            type:
+            - string
+            - 'null'
+          mobilTlf:
+            type:
+            - string
+            - 'null'
+          epostAdresse:
+            type:
+            - string
+            - 'null'
+          fodt:
+            type:
+            - string
+            - 'null'
+          tittel:
+            type:
+            - string
+            - 'null'
+          lonnskonto:
+            type:
+            - string
+            - 'null'
+          ansattDato:
+            type:
+            - string
+            - 'null'
+          sluttet:
+            type:
+            - boolean
+            - 'null'
+          aktiv:
+            type:
+            - boolean
+            - 'null'
+          sluttetDato:
+            type:
+            - string
+            - 'null'
           avdelingId:
-            type: 
-              - 'null'
-              - string
-          avsnittId:
             type:
-              - 'null'
-              - string
-          dato:
-            type: string
-          endretDato:
-            type: string
-          fAntall:
-            type: number
-          faktureres:
-            type: boolean
-          godkjent:
-            type: boolean
-          jobbId:
+            - string
+            - 'null'
+          avdeling:
             type:
-              - 'null'
-              - string
-          kontoId:
-            type: 'null'
-          kostpris:
-            type: number
-          kundeId:
-            type: 'null'
-          ma_Timer:
-            type: number
-          notat:
+            - string
+            - 'null'
+          identifikator:
             type:
-              - 'null'
-              - string
+            - string
+            - 'null'
+          element1Id:
+            type:
+            - string
+            - 'null'
+          element2Id:
+            type:
+            - string
+            - 'null'
+          antallFerieDager:
+            type:
+            - number
+            - 'null'
+          statsborgerskap:
+            type:
+            - string
+            - 'null'
           opprettetDato:
-            type: string
-          planFra:
             type:
-              - 'null'
-              - string
-          planTil:
+            - string
+            - 'null'
+          kortKode:
             type:
-              - 'null'
-              - string
-          produktId:
+            - string
+            - 'null'
+          stillingsprosent:
             type:
-              - 'null'
-              - string
-          produktiv:
-            type: boolean
-          prosjekt:
-            type: 'null'
-          prosjektId:
+            - number
+            - 'null'
+          kjonn:
             type:
-              - 'null'
-              - string
-          salgspris:
-            type: number
-          t_ArbT:
-            type: number
-          t_Pause1_Fra:
+            - string
+            - 'null'
+          kommune:
             type:
-              - 'null'
-              - string
-          t_Pause1_Til:
+            - string
+            - 'null'
+          spraak:
             type:
-              - 'null'
-              - string
-          t_Pause2_Fra:
-            type: 'null'
-          t_Pause2_Til:
-            type: 'null'
-          timeType:
-            type: integer
-          timeregistreringId:
-            type: integer
-          tm_Stemple_inn:
-            type: string
-          tm_Stemple_ut:
-            type: string
-          tm_Virk_inn:
-            type: string
-          tm_Virk_ut:
-            type: string
+            - string
+            - 'null'
+          sistInnlogget:
+            type:
+            - string
+            - 'null'
+          sistEndretDato:
+            type:
+            - string
+            - 'null'
+          antallHalveFerieDager:
+            type:
+            - number
+            - 'null'
+          skatteProsent:
+            type:
+            - number
+            - 'null'
+          malId:
+            type:
+            - integer
+            - 'null'
+          fastLonn:
+            type:
+            - boolean
+            - 'null'
+          innleid:
+            type:
+            - boolean
+            - 'null'
+          utelatFraLonn:
+            type:
+            - boolean
+            - 'null'
+          utelatFraRapporter:
+            type:
+            - boolean
+            - 'null'
+          utelatFraStatusrapport:
+            type:
+            - boolean
+            - 'null'
+          paaroerendeNavn:
+            type:
+            - string
+            - 'null'
+          paaroerendeNr:
+            type:
+            - string
+            - 'null'
         type: object
     retriever:
       type: SimpleRetriever
@@ -279,99 +212,21 @@ streams:
       schema:
         $schema: http://json-schema.org/schema#
         properties:
-          anleggId:
-            type: 'null'
-          ansatt:
-            type: 'null'
-          ansattId:
-            type: integer
-          arbeidsartId:
-            type: string
-          artId:
-            type: string
-          avdeling:
-            type: 'null'
           avdelingId:
             type: string
-          avsnittId:
-            type:
-              - 'null'
-              - string
-          dato:
+          hovedavdelingId:
             type: string
-          endretDato:
+          avdelingTekst:
             type: string
-          fAntall:
+          beskrivelse:
+            type: string
+          timepris:
             type: number
-          faktureres:
-            type: boolean
-          godkjent:
-            type: boolean
-          jobbId:
-            type:
-              - 'null'
-              - string
-          kontoId:
-            type: 'null'
-          kostpris:
-            type: number
-          kundeId:
-            type: 'null'
-          ma_Timer:
-            type: number
-          notat:
-            type:
-              - 'null'
-              - string
-          opprettetDato:
+          enhet:
             type: string
-          planFra:
-            type:
-              - 'null'
-              - string
-          planTil:
-            type:
-              - 'null'
-              - string
-          produktId:
-            type:
-              - 'null'
-              - string
-          produktiv:
-            type: boolean
-          prosjekt:
-            type: 'null'
-          prosjektId:
-            type:
-              - 'null'
-              - string
-          salgspris:
-            type: number
-          t_ArbT:
-            type: number
-          t_Pause1_Fra:
-            type:
-              - 'null'
-              - string
-          t_Pause1_Til:
-            type:
-              - 'null'
-              - string
-          t_Pause2_Fra:
-            type: 'null'
-          t_Pause2_Til:
-            type: 'null'
-          timeType:
-            type: integer
-          timeregistreringId:
-            type: integer
-          tm_Stemple_inn:
+          organisasjonsnr:
             type: string
-          tm_Stemple_ut:
-            type: string
-          tm_Virk_inn:
-            type: string
-          tm_Virk_ut:
+          eksternId:
             type: string
         type: object
     retriever:
@@ -658,7 +513,7 @@ streams:
         authenticator:
           type: ApiKeyAuthenticator
           api_token: '{{ config[''api_key''] }}'
-          header: tb-key
+          header: key
       record_selector:
         type: RecordSelector
         extractor:

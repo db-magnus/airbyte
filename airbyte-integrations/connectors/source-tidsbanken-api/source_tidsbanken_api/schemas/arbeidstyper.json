@@ -35,7 +35,7 @@
       "type": "integer"
     },
     "FastTekst": {
-      "type": "null"
+      "type": "string"
     },
     "Forvalg": {
       "type": "integer"
@@ -56,10 +56,10 @@
       "type": "string"
     },
     "Kostkonto": {
-      "type": "null"
+      "type": "string"
     },
     "Notat": {
-      "type": "null"
+      "type": "string"
     },
     "OppdaterBmTidVedEndring": {
       "type": "boolean"
@@ -95,7 +95,7 @@
       "type": "string"
     },
     "Sporsmal": {
-      "type": "null"
+      "type": "string"
     },
     "Standard": {
       "type": "boolean"
