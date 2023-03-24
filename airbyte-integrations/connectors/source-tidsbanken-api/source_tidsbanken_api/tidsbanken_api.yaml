@@ -1,4 +1,4 @@
-version: 0.28.0
+version: 0.32.0
 type: DeclarativeSource
 check:
   type: CheckStream
@@ -499,7 +499,7 @@ streams:
         type: HttpRequester
         url_base: https://api.tidsbanken.net/v2
         path: >-
-          /timelister
+          /timelister?$orderby=dato&$filter=endretDato gt {{ config['start_date'] }}Z
         http_method: GET
         request_parameters: {}
         request_headers: {}
